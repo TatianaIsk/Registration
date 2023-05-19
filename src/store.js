@@ -12,6 +12,7 @@ let store = {
 
         mainPage: {
             newMiddleNameText: 'Введите фамилию',
+            newCity: 'Выберите ваш город'
         },
 
         passwordPage: {

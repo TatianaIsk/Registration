@@ -5,12 +5,29 @@
     font-size: 30px;
     line-height: 34px;
     color: #666666;
-}
-
-.page {
-    margin-bottom: 50px;
+    margin-top: 50px;
 }
 
 .name {
     color: black;
+}
+
+@media screen and (max-width: 400px) {
+    .title {
+        font-size: 24px;
+        margin-top: 90px;
+    }
+    .page {
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and (max-width: 630px) {
+    .title {
+        font-size: 27px;
+        margin-top: 70px;
+    }
+    .page {
+        margin-bottom: 10px;
+    }
 }

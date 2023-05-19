@@ -1,10 +1,10 @@
-import style from './Username.module.css'
+import s from './Username.module.css'
 
 const Username = (props) => {
 
     return (
-        <div className={style.page}>
-            <h2 className={style.title}>Здравствуйте, <span className={style.name}>{props.name}</span></h2>
+        <div className={s.page}>
+            <h2 className={s.title}>Здравствуйте, <span className={s.name}>{props.name}</span></h2>
         </div>
     )
 }

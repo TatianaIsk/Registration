@@ -15,6 +15,7 @@ root.render(
          repeatPassword={store._state.passwordPage.repeatPassword}
          newPhone={store._state.personalPage.newPhone}
          newMail={store._state.personalPage.newMail}
+         newCity={store._state.mainPage.newCity}
     />
   </React.StrictMode>
 );
