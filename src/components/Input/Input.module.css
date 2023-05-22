@@ -1,0 +1,22 @@
+input {outline:none; cursor: pointer;}
+
+input:invalid {
+    border-color: red;
+}
+
+.inp {
+    font-size: 16px;
+    padding-left: 12px;
+    width: 335px;
+    height: 31px;
+}
+
+p{margin: 0}
+
+.error {
+    margin-top: 4px;
+    left: 322px;
+    position: absolute;
+    color: red;
+    font-size: 12px;
+}

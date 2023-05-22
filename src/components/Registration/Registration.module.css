@@ -1,6 +1,23 @@
+h2 {
+    margin: 0;
+}
+
 .page {
     padding-top: 40px;
-    padding-bottom: 40px;
+    border-bottom: 1px solid #E5E4E4;
+}
+
+.pageSub {
+    padding-top: 40px;
+}
+
+.error {
+    position: absolute;
+    color: red;
+    font-size: 12px;
+}
+
+.mainPage {
     border-bottom: 1px solid #E5E4E4;
 }
 
@@ -15,52 +32,23 @@
     font-size: 30px;
     line-height: 34px;
     color: #666666;
-    margin-top: 30px;
+    margin-bottom: 45px;
 }
 
-.text {
-    font-family: 'Arial', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 21px;
-    line-height: 19px;
-    color: #000000;
-    width: 200px;
-}
-
-input {outline:none;}
-
-.inp {
-    font-size: 16px;
-    padding-left: 12px;
-    width: 335px;
-    height: 31px;
-    margin-left: 50px;
-}
-
-select {outline:none;}
+select {outline:none; cursor: pointer;}
 
 .select {
     width: 352px;
     height: 37px;
-    margin-left: 50px;
     padding-left: 12px;
     font-size: 16px;
 }
 
-.textActive {
-    color: red;
-}
-
-.block {
-    display: flex;
-    align-items: center;
-}
-
 .checkBox {
-    width: 16px;
+    max-width: 16px;
     height: 16px;
     margin-left: 50px;
+    cursor: pointer;
 }
 
 .checkBox:active {
@@ -74,17 +62,25 @@ select {outline:none;}
     font-size: 16px;
     line-height: 19px;
     color: #000000;
-    margin-left: 10px;
+    position: absolute;
+    left: 345px;
+    bottom: 270px;
 }
 
-.error {
-    margin: 0 250px;
-    color: red;
+.now {
+    font-family: 'Arial', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #000000;
 }
+
+button {cursor: pointer;}
 
 .btn {
     margin-right: 20px;
-    width: 119px;
+    max-width: 119px;
     height: 40px;
     background: #71C838;
     box-shadow: 0 1px 0 #539D22;
@@ -113,20 +109,16 @@ select {outline:none;}
         padding-bottom: 15px;
     }
 
-    .text {
-        font-size: 16px;
-    }
-
     .inp {
         font-size: 14px;
         padding-left: 12px;
-        width: 133px;
+        max-width: 133px;
         height: 25px;
         margin: 0 0 0 0;
     }
 
     .select {
-        width: 150px;
+        max-width: 150px;
         height: 31px;
         margin: 0 0 0 0;
     }
@@ -136,20 +128,21 @@ select {outline:none;}
     }
 
     .checkBox {
-        width: 16px;
+        max-width: 16px;
         height: 16px;
         margin:  0 0 0 0;
+        cursor: pointer;
     }
 
     .info {
         font-size: 13px;
         margin: 0 10px;
-        width: 150px;
+        max-width: 150px;
     }
 
     .btn {
         margin-right: 10px;
-        width: 100px;
+        max-width: 100px;
         height: 40px;
         font-size: 16px;
     }

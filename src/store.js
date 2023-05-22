@@ -4,28 +4,10 @@ let store = {
             username: [
                 {
                     id: 1,
-                    name: 'Name1'
+                    name: 'Человек'
                 },
             ],
-            newNameText: 'Введите свое имя'
         },
-
-        mainPage: {
-            newMiddleNameText: 'Введите фамилию',
-            newCity: 'Выберите ваш город'
-        },
-
-        passwordPage: {
-            newPassword: 'Введите пароль',
-            repeatPassword: 'Повторите пароль'
-        },
-
-        personalPage: {
-            newPhone: '+7 (***) ***-**-**',
-            newMail: 'Введите email'
-        }
     },
-
 }
-
 export default store

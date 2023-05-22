@@ -22,12 +22,17 @@ export const validationsSchema = yup.object().shape({
         .string()
         .oneOf([yup.ref("password")], "Пароли не совпадают")
         .required("Это поле должно быть заполнено"),
+    phone: yup
+        .string()
+        .matches(
+            /^^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7}$/gm,
+            "Введите корректные данные"
+        ),
     email: yup
         .string()
         .email("Введите верный email")
         .matches(
             /^[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$/gm,
             "Введите корректные данные"
-        )
-        .required("Это поле должно быть заполнено"),
+        ),
 });

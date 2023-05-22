@@ -1,12 +1,24 @@
+import React from "react";
+
 import style from './Registration.module.css'
+
+import cities from './../../json/cities.json'
+
 import {Field, Formik} from "formik";
 import {validationsSchema} from "../validation";
-import React from "react";
-import cities from './../../json/cities.json'
-import Moment from "react-moment";
-import registrationUsername from './../../App'
+
+import WrapperInput from "./../WrapperInput/WrapperInput"
+import Input from "../Input/Input";
+import DataList from "../DataList/DataList";
 
 const Registration = (props) => {
+
+    let dataRedact = new Date()
+
+    let options = {day: 'numeric', month: 'long', year: 'numeric'}
+    options.timeZone = 'GMT+3'
+
+    let now = dataRedact.toLocaleString(options)
 
     return (
         <Formik initialValues={{
@@ -29,128 +41,123 @@ const Registration = (props) => {
                 validateOnBlur
                 validationSchema={validationsSchema}
         >
-            {({errors, touched, handleChange, handleBlur, isValid, handleSubmit, dirty, values, defaultValue}) => (
+            {({errors, touched, handleChange, handleBlur, isValid, handleSubmit, dirty, values}) => (
                 <div>
-                    <div className={style.page}>
-                        {errors.name && touched.name ? (
-                            <div className={style.error}>{errors.name}</div>
-                        ) : null}
-                        <div className={style.block}>
-                            <p className={style.text}>Имя
-                                <span className={style.textActive}>*</span>
-                            </p>
-                            <Field name="name"
+                    <div className={style.mainPage}>
+
+                        <WrapperInput
+                            leftText="Имя"
+                            requiredInput="*">
+                            <Input name="name"
                                    type="text"
-                                   placeholder={props.newNameText}
-                                   className={style.inp}
+                                   style={{marginLeft: 174 + 'px'}}
+                                   placeholder="Введите имя"
+                                   error={touched.name && errors.name}
+                                   onChange={handleChange}
                             />
-                        </div>
+                        </WrapperInput>
 
-                        {errors.lastName && touched.lastName ? (
-                            <div className={style.error}>{errors.lastName}</div>
-                        ) : null}
-                        <div className={style.block}>
-                            <p className={style.text}>Фамилия
-                                <span className={style.textActive}>*</span>
-                            </p>
-                            <Field name="lastName"
+                        <WrapperInput
+                            leftText="Фамилия"
+                            requiredInput="*">
+                            <Input name="lastName"
                                    type="text"
-                                   placeholder={props.newMiddleNameText}
-                                   className={style.inp}/>
-                        </div>
+                                   style={{marginLeft: 126 + 'px'}}
+                                   placeholder="Введите фамилию"
+                                   error={touched.lastName && errors.lastName}
+                                   onChange={handleChange}
+                            />
+                        </WrapperInput>
 
-                        {errors.city && touched.city ? (
-                            <div className={style.error}>{errors.city}</div>
-                        ) : null}
-                        <div className={style.block}>
-                            <p className={style.text}>Ваш город
-                                <span className={style.textActive}>*</span>
-                            </p>
-                            <select className={style.select}
-                                    name="city"
-                                    onBlur={handleBlur}
-                                    onChange={handleChange}
-                                    placeholder={props.newCity}>
-                                {cities.map((cities) => {
-                                    if (cities.population > 50000) {
-                                        return <option>{cities.city}</option>
-                                    }
-                                })}
-                                <option selected="true" disabled="disabled">Красноярск</option>
-                            </select>
-                        </div>
+                        <WrapperInput
+                            leftText="Ваш город"
+                            requiredInput="*">
+                            <DataList
+                                name="city"
+                                error={touched.city && errors.city}
+                                placeholder="Выберите ваш город"
+                                onChange={handleChange}
+                                style={{marginLeft: 112 + 'px'}}
+                                defaultValue={cities
+                                    .filter((item: any) => item.population > 50000)
+                                    .map((item) => item.city)}
+                            />
+                        </WrapperInput>
+
                     </div>
 
 
                     <div className={style.page}>
-                        {errors.password && touched.password ? (
-                            <div className={style.error}>{errors.password}</div>
-                        ) : null}
-                        <div className={style.block}>
-                            <p className={style.text}>Пароль</p>
-                            <Field name="password"
-                                   type="password"
-                                   placeholder={props.newPassword}
-                                   className={style.inp}/>
-                        </div>
 
-                        {errors.repeatPassword && touched.repeatPassword ? (
-                            <div className={style.error}>{errors.repeatPassword}</div>
-                        ) : null}
-                        <div className={style.block}>
-                            <p className={style.text}>Пароль еще раз
-                                <span className={style.textActive}>*</span>
-                            </p>
-                            <Field name="repeatPassword"
+                        <WrapperInput leftText="Пароль">
+                            <Input name="password"
                                    type="password"
-                                   placeholder={props.repeatPassword}
-                                   className={style.inp}/>
-                        </div>
-                    </div>
-
-                    <div className={style.page}>
-                        <div className={style.block}>
-                            <p className={style.text}>Номер телефона</p>
-                            <Field name="phone"
-                                   type="phone"
-                                   placeholder={props.newPhone}
-                                   className={style.inp}
-                                   onBlur={handleBlur}
-                                   value={values.phone}
+                                   style={{marginLeft: 151 + 'px'}}
+                                   placeholder="Введите пароль"
+                                   error={touched.password && errors.password}
                                    onChange={handleChange}
                             />
-                        </div>
+                        </WrapperInput>
 
-                        {errors.email && touched.email ? (
-                            <div className={style.error}>{errors.email}</div>
-                        ) : null}
-                        <div className={style.block}>
-                            <p className={style.text}>Электронная почта</p>
-                            <Field name="email"
-                                   type="text"
+                        <WrapperInput
+                            leftText="Пароль еще раз"
+                            requiredInput="*">
+                            <Input name="repeatPassword"
+                                   type="password"
+                                   style={{marginLeft: 58 + 'px'}}
+                                   placeholder="Пароль еще раз"
+                                   error={touched.repeatPassword && errors.repeatPassword}
+                                   onChange={handleChange}
+                            />
+                        </WrapperInput>
+
+                    </div>
+
+                    <div className={style.pageSub}>
+
+                        <WrapperInput leftText="Номер телефона">
+                            <Input name="phone"
+                                   type="tel"
+                                   style={{marginLeft: 56 + 'px'}}
+                                   placeholder="+7 (***) ***-**-**"
                                    onBlur={handleBlur}
                                    onChange={handleChange}
-                                   value={values.email}
-                                   placeholder={props.newMail}
-                                   className={style.inp}/>
-                        </div>
+                                   error={touched.phone && errors.phone}
+                            />
+                        </WrapperInput>
 
-                        <div className={style.block}>
-                            <p className={style.text}>Я согласен</p>
+                        <WrapperInput leftText="Электронная почта">
+                            <Input name="email"
+                                   type="text"
+                                   style={{marginLeft: 36 + 'px'}}
+                                   onBlur={handleBlur}
+                                   onChange={handleChange}
+                                   placeholder="Введите email"
+                                   error={touched.email && errors.email}
+                            />
+                        </WrapperInput>
+
+                        <WrapperInput leftText="Я согласен">
                             <Field
                                 name="agree"
+                                id="agree"
+                                style={{marginLeft: 115 + 'px'}}
                                 checked={values.agree}
                                 onChange={handleChange}
-                                className={style.checkBox} type="checkbox"/>
+                                type="checkbox"
+                            />
                             <p className={style.info}>принимать актуальную информацию на email</p>
-                        </div>
+                        </WrapperInput>
+
                         <div className={style.btnBlock}>
                             <button disabled={!isValid && !dirty} onClick={handleSubmit}
                                     className={style.btn}>Изменить
                             </button>
-                            <p className={style.info}>последнее изменение <Moment format="DD MMMM YYYY в HH:mm:s" interval={1000}/></p>
+                            <p className={style.now}>последнее изменение {now}</p>
                         </div>
+
                     </div>
+
                 </div>
             )}
         </Formik>
