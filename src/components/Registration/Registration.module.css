@@ -62,9 +62,7 @@ select {outline:none; cursor: pointer;}
     font-size: 16px;
     line-height: 19px;
     color: #000000;
-    position: absolute;
-    left: 345px;
-    bottom: 270px;
+    margin-left: 10px;
 }
 
 .now {
@@ -112,7 +110,7 @@ button {cursor: pointer;}
     .inp {
         font-size: 14px;
         padding-left: 12px;
-        max-width: 133px;
+        width: 100px;
         height: 25px;
         margin: 0 0 0 0;
     }

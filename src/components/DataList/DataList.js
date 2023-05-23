@@ -4,26 +4,30 @@ import {Field} from "formik";
 interface SelectProps {
     name: string;
     error?: any;
+    id?: string;
     placeholder?: string;
     onChange?: (e:any) => void;
     style?: any;
     defaultValue?: any;
+    value?: any;
 }
 
 const DataList: React.FC<SelectProps> = ({
-                                         name, error, placeholder, onChange, style, defaultValue
+                                         name, error, id, placeholder, onChange, style, defaultValue, value
                                      }) => {
     return (
         <div>
             <Field
                 name={name}
                 error={error}
+                id={id}
                 placeholder={placeholder}
                 onChange={onChange}
                 style={style}
-                className={styles.inp}
+                className={error ? styles.inpError : styles.inp}
                 defaultValue={defaultValue}
                 list={`list_${name}`}
+                value={value}
             />
             <p className={styles.error}>{error}</p>
 

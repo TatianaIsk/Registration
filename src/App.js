@@ -6,7 +6,7 @@ import Username from "./components/Username/Username";
 const App = (props) => {
 
     let registrationUsername =
-        props.username.map((username) => <Username key={username.id} name={username.name} id={username.id}/>)
+        props.username.map((username) => <Username key={username.id} name={username.name} id={username.id} value={username}/>)
 
     return (
         <div className="app">

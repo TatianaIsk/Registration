@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 
 import style from './Registration.module.css'
 
@@ -10,17 +10,12 @@ import {validationsSchema} from "../validation";
 import WrapperInput from "./../WrapperInput/WrapperInput"
 import Input from "../Input/Input";
 import DataList from "../DataList/DataList";
+import getDate from "../../getDate";
 
-const Registration = (props) => {
-
-    let dataRedact = new Date()
-
-    let options = {day: 'numeric', month: 'long', year: 'numeric'}
-    options.timeZone = 'GMT+3'
-
-    let now = dataRedact.toLocaleString(options)
+const Registration = () => {
 
     return (
+
         <Formik initialValues={{
             name: '',
             lastName: '',
@@ -47,40 +42,49 @@ const Registration = (props) => {
 
                         <WrapperInput
                             leftText="Имя"
-                            requiredInput="*">
+                            requiredInput="*"
+                            htmlFor="name">
                             <Input name="name"
                                    type="text"
+                                   id="name"
                                    style={{marginLeft: 174 + 'px'}}
                                    placeholder="Введите имя"
                                    error={touched.name && errors.name}
                                    onChange={handleChange}
+                                   value={values.name}
                             />
                         </WrapperInput>
 
                         <WrapperInput
                             leftText="Фамилия"
-                            requiredInput="*">
+                            requiredInput="*"
+                            htmlFor="lastName">
                             <Input name="lastName"
                                    type="text"
+                                   id="lastName"
                                    style={{marginLeft: 126 + 'px'}}
                                    placeholder="Введите фамилию"
                                    error={touched.lastName && errors.lastName}
                                    onChange={handleChange}
+                                   value={values.lastName}
                             />
                         </WrapperInput>
 
                         <WrapperInput
                             leftText="Ваш город"
-                            requiredInput="*">
+                            requiredInput="*"
+                            htmlFor="city">
                             <DataList
                                 name="city"
                                 error={touched.city && errors.city}
+                                id="city"
                                 placeholder="Выберите ваш город"
                                 onChange={handleChange}
                                 style={{marginLeft: 112 + 'px'}}
                                 defaultValue={cities
                                     .filter((item: any) => item.population > 50000)
                                     .map((item) => item.city)}
+                                value={values.city}
                             />
                         </WrapperInput>
 
@@ -89,25 +93,32 @@ const Registration = (props) => {
 
                     <div className={style.page}>
 
-                        <WrapperInput leftText="Пароль">
+                        <WrapperInput
+                            leftText="Пароль"
+                            htmlFor="password">
                             <Input name="password"
                                    type="password"
+                                   id="password"
                                    style={{marginLeft: 151 + 'px'}}
                                    placeholder="Введите пароль"
                                    error={touched.password && errors.password}
                                    onChange={handleChange}
+                                   value={values.password}
                             />
                         </WrapperInput>
 
                         <WrapperInput
                             leftText="Пароль еще раз"
-                            requiredInput="*">
+                            requiredInput="*"
+                            htmlFor="repeatPassword">
                             <Input name="repeatPassword"
                                    type="password"
+                                   id="repeatPassword"
                                    style={{marginLeft: 58 + 'px'}}
                                    placeholder="Пароль еще раз"
                                    error={touched.repeatPassword && errors.repeatPassword}
                                    onChange={handleChange}
+                                   value={values.repeatPassword}
                             />
                         </WrapperInput>
 
@@ -115,29 +126,39 @@ const Registration = (props) => {
 
                     <div className={style.pageSub}>
 
-                        <WrapperInput leftText="Номер телефона">
+                        <WrapperInput
+                            leftText="Номер телефона"
+                            htmlFor="phone">
                             <Input name="phone"
                                    type="tel"
+                                   id="phone"
                                    style={{marginLeft: 56 + 'px'}}
                                    placeholder="+7 (***) ***-**-**"
                                    onBlur={handleBlur}
                                    onChange={handleChange}
                                    error={touched.phone && errors.phone}
+                                   value={values.phone}
                             />
                         </WrapperInput>
 
-                        <WrapperInput leftText="Электронная почта">
+                        <WrapperInput
+                            leftText="Электронная почта"
+                            htmlFor="email">
                             <Input name="email"
                                    type="text"
+                                   id="email"
                                    style={{marginLeft: 36 + 'px'}}
                                    onBlur={handleBlur}
                                    onChange={handleChange}
                                    placeholder="Введите email"
                                    error={touched.email && errors.email}
+                                   value={values.email}
                             />
                         </WrapperInput>
 
-                        <WrapperInput leftText="Я согласен">
+                        <WrapperInput
+                            leftText="Я согласен"
+                            htmlFor="agree">
                             <Field
                                 name="agree"
                                 id="agree"
@@ -153,7 +174,7 @@ const Registration = (props) => {
                             <button disabled={!isValid && !dirty} onClick={handleSubmit}
                                     className={style.btn}>Изменить
                             </button>
-                            <p className={style.now}>последнее изменение {now}</p>
+                            последние изменения{Object.keys(errors).length === 0 && getDate()}
                         </div>
 
                     </div>
