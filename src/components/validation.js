@@ -36,16 +36,5 @@ export const validationsSchema = yup.object().shape({
             /^[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$/gm,
             "Введите корректные данные"
         )
-        .when('agree', {
-            is: true,
-            then: yup
-                .string()
-                .required('Email должен быть заполнен')
-                .email("Введите верный email")
-                .matches(
-                    /^[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$/gm,
-                    "Введите корректные данные"
-                ),
-        })
 });
 

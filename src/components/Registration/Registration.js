@@ -155,7 +155,9 @@ const Registration = () => {
                                    value={values.email}
                             />
                         </WrapperInput>
-
+                        {values.agree && !values.email && (
+                            <p className={style.checkBoxText}>Email должен быть заполнен</p>
+                        )}
                         <WrapperInput
                             leftText="Я согласен"
                             htmlFor="agree">

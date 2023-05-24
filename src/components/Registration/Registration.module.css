@@ -55,6 +55,14 @@ select {outline:none; cursor: pointer;}
     background: white;
 }
 
+.checkBoxText {
+    position: absolute;
+    color: red;
+    font-size: 12px;
+    bottom: 324px;
+    left: 322px;
+}
+
 .info {
     font-family: 'Arial', sans-serif;
     font-style: normal;
